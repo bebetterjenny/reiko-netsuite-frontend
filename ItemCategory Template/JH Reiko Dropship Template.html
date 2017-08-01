@@ -3,11 +3,11 @@
 <div class="dropshipcontainer">
     <div class="dropshipbanner">
         <div class="dropshipbannerleft">
-            dropshipbannerleft
         </div>
         <div class="dropshipbannerright">
             <div class="dropshipbannerright-container">
                 <div>
+                    <img src="http://reikowireless.com/site/images/dropship/Reiko-logo.png" />
                     <h>Dropshipping</h>
                     <p>Empowers the future E-commerce</p>
                 </div>
@@ -60,7 +60,7 @@
         </div>
         <div class="dropshipdetails">
             <div>
-                <img src="dropshipdetail1.jpg">
+                <img src="http://reikowireless.com/site/images/dropship/dropshipdetail1.jpg">
                 <div>
                     <h>WHY DROP SHIP?</h>
                     <p>
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div>
-                <img src="dropshipdetail2.png">
+                <img src="http://reikowireless.com/site/images/dropship/dropshipdetail2.png">
                 <div>
                     <h>WHY CHOOSE REIKO?</h>
                     <p>
@@ -92,24 +92,23 @@
             </div>
         </div>
     </div>
-    <div class="arrow-down"></div>
+    <div class="arrow-down mousefollower"></div>
     <div class="dropshipdownload">
         <ul>
             <li>
                 <div class="dropshippswd">
-                    <form id="pswdinput">
+                    <div id="pswdinput">
                         <input type="text" name="password" placeholder="Password given by your dropship specialist">
-                        <input type="submit" value="Download">
+                        <input type="button" value="Download">
                         <div class="arrow-down"></div>
-                    </form>
+                    </div>
                     <div id="wrongpswd">
                         <p>Your password is wrong, please contact your dropship specialist for the latest one!</p>
                         <div class="arrow-down"></div>
                     </div>
                 </div>
-                <a href="">
+                <a href="" >
                     <figure>
-                        <img src="http://reikowireless.com/site/images/dropship/download.png">
                         <img src="http://reikowireless.com/site/images/dropship/file.png">
                         <figcaption>Inventory.xlsx</figcaption>
                     </figure>
@@ -119,7 +118,6 @@
             <li>
                 <a href="">
                     <figure>
-                        <img src="http://reikowireless.com/site/images/dropship/download.png">
                         <img src="http://reikowireless.com/site/images/dropship/file.png">
                         <figcaption>Product MSRP.csv</figcaption>
                     </figure>
@@ -128,7 +126,6 @@
             <li>
                 <a href="">
                     <figure>
-                        <img src="http://reikowireless.com/site/images/dropship/download.png">
                         <img src="http://reikowireless.com/site/images/dropship/file.png">
                         <figcaption>DROPSHIP Template.csv</figcaption>
                     </figure>
@@ -140,6 +137,30 @@
 </div>
 
 
+
 <script>
 $("#wrongpswd").hide();
+$('#pswdinput').hide();
+$(".dropshipdownload li:first-child a").click((e)=>{
+    e.preventDefault();
+    var password = prompt("Please enter code to download this file: ");
+    if (password == "yQnDgDMA") {
+        window.open("/site/Documents/Inventory.xlsx");    
+    } else {
+        alert("Incorrect code! Please try again.");
+    }
+});  
+</script>
+
+<script>
+(function(){
+    const root = document.documentElement;
+ 
+    document.addEventListener('mousemove', evt => {
+    let x = evt.clientX;
+ 
+    root.style.setProperty('--mouse-x', x);
+});
+})();
+
 </script>
