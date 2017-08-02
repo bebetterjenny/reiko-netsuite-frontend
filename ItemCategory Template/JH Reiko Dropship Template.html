@@ -8,7 +8,7 @@
             <div class="dropshipbannerright-container">
                 <div>
                     <img src="http://reikowireless.com/site/images/dropship/Reiko-logo.png" />
-                    <h>Dropshipping</h>
+                    <h>DROPSHIPPING</h>
                     <p>Empowers the future E-commerce</p>
                 </div>
                 <div>
@@ -158,6 +158,7 @@ $(".dropshipdownload li:first-child a").click((e)=>{
  
     document.addEventListener('mousemove', evt => {
     let x = evt.clientX;
+    if (x>=(document.body.clientWidth-40)) x = document.body.clientWidth-40;
  
     root.style.setProperty('--mouse-x', x);
 });

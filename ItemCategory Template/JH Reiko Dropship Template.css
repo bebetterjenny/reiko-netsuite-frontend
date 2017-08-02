@@ -47,6 +47,7 @@
     display: inline;
     width:80px;
     margin-bottom: 15px;
+    margin-left:-6px;
 }
 .dropshipbannerright-container > div:first-child h{
     display: inline;
@@ -288,6 +289,8 @@ input[type="button"]:hover{
     }
     .dropshipbannerright-container > div:first-child img{
         width:120px;
+        margin-bottom:25px;
+        margin-left:-12px;
     }
     .dropshipbannerright-container > div:first-child p, 
     .dropshipbannerright-container > div:nth-child(2) p {
@@ -324,5 +327,17 @@ input[type="button"]:hover{
         font-size:1.6em;
     }
 }
-
+@media (max-width: 640px){
+    .dropshipbannerright{
+        height:auto;
+    }
+    .dropshipbannerright-container{
+        display:block;
+        width:90%;
+        margin:5px auto;
+    }
+    .dropshipbannerright-container > div:nth-child(2){
+        width:100%;
+    }
+}
 </style>
