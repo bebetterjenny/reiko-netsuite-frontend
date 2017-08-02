@@ -1,4 +1,4 @@
- <style>
+<style>
 /******************Banner*******************/
 .commonimagecontainer {display: none}
 .breadcrumbcontainer {display: none}
@@ -219,11 +219,10 @@ input[type="button"]:hover{
     position:absolute;
     bottom:170px;
     left:-105px;
-    display:none;
 }
 .dropshippswd #pswdinput{
     width: 320px;
-    background-color: #FFEEE4;
+    background-color: rgba(246,134,87, 0.8);
     padding:5px 0;
     margin-bottom: 0;
     border-radius: 10px;
@@ -252,6 +251,8 @@ input[type="button"]:hover{
 .dropshippswd .arrow-down{
     position:absolute;
     left:140px;
+    border-top-color: rgba(246,134,87, 0.8);
+    bottom:-20px;
 }
 .dropshippswd #wrongpswd{
     width:320px;
@@ -262,10 +263,27 @@ input[type="button"]:hover{
 }
 .dropshippswd #wrongpswd p{
     color:#fff;
-    background: #FFEEE4;
+    background: rgba(246,134,87, 0.8);
     padding:10px;
     margin:0;
     border-radius:10px;
+}
+/********************dropship note********************************/
+.dropshipnote p {
+    font-size: 14px; 
+    font-weight: 600; 
+    line-height: 2.3em; 
+    width: 90%; 
+    margin:auto;
+    color: #333;
+}
+.dropshipnote p a {
+    text-decoration: none;
+    color: #Ffaf7f;
+}
+.dropshipnote p a:hover{
+    text-decoration: none;
+    color: #F58556;
 }
 /*******************font********************/
 .dropshipcontainer h{

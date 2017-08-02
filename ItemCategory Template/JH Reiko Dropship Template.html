@@ -1,5 +1,3 @@
-<link rel="stylesheet" type="text/css" href="JH Reiko Dropship Template.css" />
-
 <div class="dropshipcontainer">
     <div class="dropshipbanner">
         <div class="dropshipbannerleft">
@@ -9,14 +7,14 @@
                 <div>
                     <img src="http://reikowireless.com/site/images/dropship/Reiko-logo.png" />
                     <h>DROPSHIPPING</h>
-                    <p>Empowers the future E-commerce</p>
+                    <p>Empower the future E-commerce</p>
                 </div>
                 <div>
                     <h>WHAT IS DROPSHIPPING?</h>
-                    <p>Drop Ship is a fulfillment model that allows you to purchase and ships out goodes from the manufacturer directly to the retailer without going through the usual distribution channels. Reiko has commited to enable the small business around the globe with our state of the art fulfillment center and lowest price guaranteed on Reiko products.</p>
+                    <p>Drop Ship is a fulfillment model that allows you to purchase and ships out goods from the manufacturer directly to the retailer without going through the usual distribution channels. Reiko has commited to enable the small business around the globe with our state of the art fulfillment center and lowest price guaranteed.&#x2a;&#x2a;</p>
                 </div>
                 <div>
-                    <input type="button" value="Join Us!">
+                    <a href="/site/Documents/Reiko Wireless Inc. Drop Ship Agreement.docx" target="_blank"><input type="button" value="Join Us!"></a>
                     <p class="helptext">*Reiko Wireless Inc. Drop Ship Agreement</p>
                 </div>
             </div>
@@ -116,7 +114,7 @@
                 <p class="helptext">*Password required</p>
             </li>
             <li>
-                <a href="">
+                <a href="/site/Documents/Product MSRP.csv" target="_blank">
                     <figure>
                         <img src="http://reikowireless.com/site/images/dropship/file.png">
                         <figcaption>Product MSRP.csv</figcaption>
@@ -124,7 +122,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="/site/Documents/DROPSHIP Template.csv">
                     <figure>
                         <img src="http://reikowireless.com/site/images/dropship/file.png">
                         <figcaption>DROPSHIP Template.csv</figcaption>
@@ -133,7 +131,12 @@
             </li>
         </ul>
     </div>
-    
+    <div class="dropshipnote">
+        <p>
+            * For any questions, please contact our drop ship department direct line: <a href="tel: 16319136717">(631)913-6717</a> or our drop ship department email: <a href="mailto: markliu@reikowireless.com">markliu@reikowireless.com</a>.
+        </p>
+        <p style="">&#x2a;&#x2a; On Reiko products.</p>
+    </div>
 </div>
 
 
@@ -141,27 +144,35 @@
 <script>
 $("#wrongpswd").hide();
 $('#pswdinput').hide();
+$(document).click(function(e) {
+    if ($(e.target).is('.dropshipdownload li:first-child, .dropshipdownload li:first-child *')) {
+        return;
+    }
+    $('#pswdinput, #pswdinput *, #wrongpswd, #wrongpswd *').fadeOut("slow");
+});     
 $(".dropshipdownload li:first-child a").click((e)=>{
     e.preventDefault();
-    var password = prompt("Please enter code to download this file: ");
-    if (password == "yQnDgDMA") {
-        window.open("/site/Documents/Inventory.xlsx");    
-    } else {
-        alert("Incorrect code! Please try again.");
-    }
-});  
+    $("#pswdinput, #pswdinput *").fadeIn("slow");
+    $("#pswdinput input[type='button']").click(()=>{
+        if ($("#pswdinput input[type='text']").val() == "yQnDgDMA") {
+            $('#pswdinput, #pswdinput *').hide();
+            window.open("/site/Documents/Inventory.xlsx", "_blank");
+        } else {
+            $("#wrongpswd, #wrongpswd *").fadeIn("slow");
+        }
+    });
+    
+});
+ 
 </script>
 
 <script>
 (function(){
     const root = document.documentElement;
- 
     document.addEventListener('mousemove', evt => {
     let x = evt.clientX;
     if (x>=(document.body.clientWidth-40)) x = document.body.clientWidth-40;
- 
     root.style.setProperty('--mouse-x', x);
 });
 })();
-
 </script>
