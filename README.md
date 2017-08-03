@@ -1,2 +1,2 @@
-# reiko-netsuite-frontend
+# Reiko Netsuite Frontend
 Reiko Wireless Netsuite FrontEnd
