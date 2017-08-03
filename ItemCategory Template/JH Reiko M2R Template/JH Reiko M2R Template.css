@@ -1,0 +1,13 @@
+<style>
+.header_td{
+    display: none;
+}
+.container-fluid{
+// TO do width:1300 desktop view
+}
+.navbar-default .navbar-toggle{
+    border:none;
+}
+
+
+</style>
