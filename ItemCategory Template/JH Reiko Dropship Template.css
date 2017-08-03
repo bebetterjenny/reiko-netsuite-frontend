@@ -160,10 +160,24 @@ input[type="button"]:hover{
 .dropshipdetails > div{
     display: inline-block;
 }
-.dropshipdetails img{
+.dropshipdetails > div .img{
+    position:relative;
+}
+.dropshipdetails .img{
     display: inline;
-    width: 35%;
     float: left;
+    width: 30%;
+}
+.dropshipdetails .img img{
+    width:100%;
+    position:relative;
+    z-index: 1;
+}
+.dropshipdetails .img #scrollscreen{
+    position:absolute;
+    top:20px;
+    z-index: 0;
+    max-height: 100px;
 }
 .dropshipdetails > div > div{
     display:flex;
@@ -342,6 +356,9 @@ input[type="button"]:hover{
     }
     .dropshipcontainer h{
         font-size:1.6em;
+    }
+    .dropshipdetails .img{
+        width: 30%;
     }
 }
 @media (max-width: 640px){
