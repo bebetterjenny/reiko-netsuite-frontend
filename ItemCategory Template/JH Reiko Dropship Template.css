@@ -75,7 +75,13 @@
 input[type="button"]:hover{
     box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2);
 }
-
+.dropshipbannerright-container p a {
+    text-decoration: none;
+    color: #fff;
+}
+.dropshipbannerright-container p a:hover{
+    text-decoration: none;
+}
 /*****************Content*******************/
 .dropshipcontent {
     width: 100%;
@@ -277,14 +283,7 @@ input[type="button"]:hover{
     margin:auto;
     color: #333;
 }
-.dropshipnote p a {
-    text-decoration: none;
-    color: #Ffaf7f;
-}
-.dropshipnote p a:hover{
-    text-decoration: none;
-    color: #F58556;
-}
+
 /*******************font********************/
 .dropshipcontainer h{
     font-size: 2em;
