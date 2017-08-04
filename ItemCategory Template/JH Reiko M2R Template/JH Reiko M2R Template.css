@@ -1,13 +1,163 @@
 <style>
 .header_td{
     display: none;
+    
 }
-.container-fluid{
-// TO do width:1300 desktop view
+.home-wrapper{
+    height:200%;
 }
-.navbar-default .navbar-toggle{
-    border:none;
+.navbar{
+    background: rgba(22,51,95,1);
+    border: none;
+}
+.banner{
+    background-image: url("m2rbackground.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: top;
+    position:absolute;
+    top:0;
+    z-index: -1;
+    width:100%;
+    height:100%; 
+    box-shadow: 1px 1px 23px 0 rgba(0,0,0,.6);
+}
+.overlay{
+    position:absolute;
+    top:0;
+    z-index: -1;
+    width:100%;
+    height:100%;
+    background: dimgrey;
+    background: -webkit-linear-gradient(darkblue, aliceblue);
+    background: -o-linear-gradient(dimgrey, aliceblue);
+    background: -moz-linear-gradient(dimgrey, aliceblue);
+    background: linear-gradient(to bottom, rgba(22,51,95,1)50px, rgba(22,51,95,0.6), rgba(185,237,248,0.2),rgba(185,237,248,0.6));
+}
+.jumbotron{
+    background-color: transparent;
+    width:90%;
+    margin:auto;
+    color: #fff;
+}
+.jumbotron a{
+    color: #fff;
+}
+.jumbotron .btn{
+    background-color: #F37C3D;
+}
+/************************************************************
+***********************  content  ***************************
+************************************************************/
+#content{
+    position:fixed;
+    top: 0;
+    width:100%;
+    
+}
+.page-header{
+    text-align: center;
+}
+.nav-tabs>li{
+    width:33.333%;
+    text-align: center;
+}
+/************************************************************
+***********************  workflow  *************************
+**********************************************************/
+#workflow .row{
+    display: flex;
+    align-items: center;
+}
+.arrow{
+    min-height:48px;
+    max-height:64px;
+}
+.arrow-long{
+    background-size:cover !important;
+}
+.arrow-right{
+    position: relative;
+    overflow: hidden;
+    background-image: url("a.svg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.arrow-left{
+    position: relative;
+    overflow: hidden;
+    background-image: url("a.svg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.arrow-down{
+    position: relative;
+    overflow: hidden;
+}
+.arrow-down:before{
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    z-index: 1;
+    background-image: url("a.svg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.arrow-up{
+    position: relative;
+    overflow: hidden;
+}
+.arrow-up:before{
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    z-index: 1;
+    background-image: url("a.svg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.arrow-lean{
+    position: relative;
+    overflow: hidden;
+}
+.arrow-lean:before{
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    z-index: 1;
+    background-image: url("a.svg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:center;
+    -webkit-transform: rotate(-150deg);
+    transform: rotate(-150deg);
+}
+.reiko-do{
+    background-color:coral;
+}
+.wrong-do{
+    background-color:red
 }
 
+nsform: rotate(30deg);
+}
 
 </style>
