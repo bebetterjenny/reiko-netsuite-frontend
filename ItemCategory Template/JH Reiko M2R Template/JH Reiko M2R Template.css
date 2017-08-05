@@ -69,6 +69,9 @@
     display: flex;
     align-items: center;
 }
+#workflow .row div{
+    padding:0;
+}
 .arrow{
     min-height:48px;
     max-height:64px;
@@ -150,13 +153,37 @@
     -webkit-transform: rotate(-150deg);
     transform: rotate(-150deg);
 }
+#workflow .bg-primary{
+    border-radius:5px;
+    text-align: left;
+    padding: 5px;
+    margin:0;
+}
 .reiko-do{
-    background-color:coral;
+    background-color:#F37C3D;
 }
 .wrong-do{
-    background-color:red
+    background-color:#F65676;
 }
-
+#workflow ul{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding:auto;
+    margin: 20px auto;;
+    list-style: none;
+}
+#workflow .circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    float:left;
+    margin: 5px 5px 0 0;
+}
+#workflow span{
+    float:left;
+    
+}
 nsform: rotate(30deg);
 }
 
