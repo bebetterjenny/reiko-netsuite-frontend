@@ -1,4 +1,15 @@
 <style>
+/************************************************************
+***********************  content  ***************************
+************************************************************/
+element{
+    --blue-color: rgba(88,122,165,0.8);
+    --reiko-color: rgba(243,124,61,0.8);
+    --wrong-color: rgba(246,86,118,0.8);
+}
+/************************************************************
+*********************  home-wrapper  *************************
+************************************************************/
 .header_td{
     display: none;
     
@@ -6,9 +17,12 @@
 .home-wrapper{
     height:200%;
 }
-.navbar{
+.home-wrapper .navbar{
     background: rgba(22,51,95,1);
     border: none;
+    position: fixed;
+    width:100%;
+    z-index: 1;
 }
 .banner{
     background-image: url("m2rbackground.jpg");
@@ -22,16 +36,16 @@
     height:100%; 
     box-shadow: 1px 1px 23px 0 rgba(0,0,0,.6);
 }
-.overlay{
+.home-wrapper .overlay{
     position:absolute;
     top:0;
     z-index: -1;
     width:100%;
     height:100%;
-    background: dimgrey;
-    background: -webkit-linear-gradient(darkblue, aliceblue);
-    background: -o-linear-gradient(dimgrey, aliceblue);
-    background: -moz-linear-gradient(dimgrey, aliceblue);
+    background-color: rgba(185,237,248,0.2);
+    background: -webkit-linear-gradient(rgba(22,51,95,1)50px, rgba(22,51,95,0.6), rgba(185,237,248,0.2),rgba(185,237,248,0.6));
+    background: -o-linear-gradient(rgba(22,51,95,1)50px, rgba(22,51,95,0.6), rgba(185,237,248,0.2),rgba(185,237,248,0.6));
+    background: -moz-linear-gradient(rgba(22,51,95,1)50px, rgba(22,51,95,0.6), rgba(185,237,248,0.2),rgba(185,237,248,0.6));
     background: linear-gradient(to bottom, rgba(22,51,95,1)50px, rgba(22,51,95,0.6), rgba(185,237,248,0.2),rgba(185,237,248,0.6));
 }
 .jumbotron{
@@ -53,24 +67,41 @@
     position:fixed;
     top: 0;
     width:100%;
-    
+    z-index: -99;
+    display:none;
 }
 .page-header{
     text-align: center;
+    padding-top:45px;
+    border: none;
 }
-.nav-tabs>li{
+.workflow-tab>li{
     width:33.333%;
     text-align: center;
 }
 /************************************************************
 ***********************  workflow  *************************
 **********************************************************/
+#workflow{
+    padding: 0;
+    margin-left:8%;
+    padding-top: 60px;
+}
 #workflow .row{
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 }
 #workflow .row div{
     padding:0;
+}
+#workflow .row:nth-child(odd)>div{
+    min-height: 145px;
+    display:flex;
+}
+#workflow .row div p{
+    width:90%;
+    margin:auto;
 }
 .arrow{
     min-height:48px;
@@ -154,23 +185,29 @@
     transform: rotate(-150deg);
 }
 #workflow .bg-primary{
+    background-color: transparent;
+}
+#workflow .row>div{
     border-radius:5px;
     text-align: left;
+}
+.manu-do{
     padding: 5px;
-    margin:0;
+    background-color: rgba(88,122,165,0.8);
+    -webkit-transition: 1s;
+    transition: 1s;
 }
 .reiko-do{
-    background-color:#F37C3D;
+    background-color: rgba(243,124,61,0.8);
 }
 .wrong-do{
-    background-color:#F65676;
+    background-color: rgba(246,86,118,0.8);
 }
 #workflow ul{
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    padding:auto;
-    margin: 20px auto;;
+    margin: 60px auto;;
     list-style: none;
 }
 #workflow .circle{
@@ -184,7 +221,96 @@
     float:left;
     
 }
-nsform: rotate(30deg);
+/************************************************************
+***********************  pricetable  *************************
+**********************************************************/
+#pricing{
+    background-color: rgba(243,124,61,0.8);
+    background: -webkit-linear-gradient(left top, rgba(243,124,61,0.6), rgba(247,133,0,0));
+    background: -o-linear-gradient(bottom right, rgba(243,124,61,0.6), rgba(247,133,0,0));
+    background: -moz-linear-gradient(bottom right, rgba(243,124,61,0.6), rgba(247,133,0,0));
+    background: linear-gradient(to bottom right, rgba(243,124,61,1), rgba(243,124,61,0));
+    padding:auto;
 }
-
+#pricing .page-header{
+    padding:60px 0 40px;
+}
+.price-tab{
+    width:70%;
+    margin:0 auto;
+    display: flex;
+}
+.price-tab>li{
+    width:50%;
+    text-align: center;
+}
+.price-tab>li a{
+    margin-right: 0;
+    border-radius: 0;
+    height:100%;
+}
+.price-tab>li:not(.active)>a{
+    color: #818181;
+}
+.tablecontainer1{
+    background-color: #fff;
+}
+.tablecontainer2{
+    padding-top:90px;
+}
+#pricetable {
+    width:90%;
+    margin:auto;
+}
+#pricetable thead th:last-child{
+    border-right: none;
+}
+#pricetable thead,
+#pricetable .mode2{
+    display: none;
+}
+#pricetable tbody>tr:first-child th,
+#pricetable tbody>tr:first-child td{
+    border-top:none;
+}
+#pricetable th{
+    vertical-align: middle;
+    text-align: center;
+    border-right: rgb(221,221,221) 1px solid;
+}
+#pricetable td{
+    vertical-align: middle;
+    border-left:  rgb(221,221,221) 1px solid;
+}
+/************************************************************
+***********************  compare  *************************
+**********************************************************/
+#compare table{
+    width:90%;
+    margin:auto;
+    border: rgb(221,221,221) 1px solid;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px 0 rgba(0,0,0,.2);
+}
+#compare td{
+    vertical-align: middle;
+    text-align: center;
+}
+#compare img{
+    width:28px;
+}
+/************************************************************
+***********************  contact  *************************
+**********************************************************/
+#contact{
+    margin-top:120px;
+    background-color: rgba(243,124,61,0.8);
+    background: -webkit-linear-gradient(left top, rgba(243,124,61,0.6), rgba(247,133,0,0));
+    background: -o-linear-gradient(bottom right, rgba(243,124,61,0.6), rgba(247,133,0,0));
+    background: -moz-linear-gradient(bottom right, rgba(243,124,61,0.6), rgba(247,133,0,0));
+    background: linear-gradient(to bottom right,  rgba(22,51,95,0.8)50px, rgba(22,51,95,0.6), rgba(88,122,165,0.4),rgba(88,122,165,0.2));
+}
+#contact .row{
+    margin:45px; auto;
+}
 </style>
