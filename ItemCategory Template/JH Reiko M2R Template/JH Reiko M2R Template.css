@@ -16,6 +16,7 @@ element{
 }
 .home-wrapper{
     height:200%;
+    z-index: -99;
 }
 .home-wrapper .navbar{
     background: rgba(22,51,95,1);
@@ -50,15 +51,22 @@ element{
 }
 .jumbotron{
     background-color: transparent;
-    width:90%;
+    width:60%;
     margin:auto;
     color: #fff;
+    position: absolute;
+    top: 120px;
+    left:100px;
+}
+.jumbotron p{
+    margin-top:45px;
 }
 .jumbotron a{
     color: #fff;
 }
 .jumbotron .btn{
     background-color: #F37C3D;
+    padding:10px 12px;
 }
 /************************************************************
 ***********************  content  ***************************
@@ -72,7 +80,7 @@ element{
 }
 .page-header{
     text-align: center;
-    padding-top:45px;
+    padding-top:80px;
     border: none;
 }
 .workflow-tab>li{
@@ -225,15 +233,14 @@ element{
 ***********************  pricetable  *************************
 **********************************************************/
 #pricing{
-    background-color: rgba(243,124,61,0.8);
-    background: -webkit-linear-gradient(left top, rgba(243,124,61,0.6), rgba(247,133,0,0));
-    background: -o-linear-gradient(bottom right, rgba(243,124,61,0.6), rgba(247,133,0,0));
-    background: -moz-linear-gradient(bottom right, rgba(243,124,61,0.6), rgba(247,133,0,0));
-    background: linear-gradient(to bottom right, rgba(243,124,61,1), rgba(243,124,61,0));
+    background-color: rgba(88,122,165,0.8);
     padding:auto;
 }
 #pricing .page-header{
     padding:60px 0 40px;
+}
+#pricing .page-header small{
+    color:#fff;
 }
 .price-tab{
     width:70%;
@@ -250,7 +257,7 @@ element{
     height:100%;
 }
 .price-tab>li:not(.active)>a{
-    color: #818181;
+    color: #fff;
 }
 .tablecontainer1{
     background-color: #fff;
@@ -285,19 +292,23 @@ element{
 /************************************************************
 ***********************  compare  *************************
 **********************************************************/
-#compare table{
+#comparetable{
     width:90%;
     margin:auto;
     border: rgb(221,221,221) 1px solid;
     border-radius: 5px;
     box-shadow: 1px 1px 8px 0 rgba(0,0,0,.2);
 }
+#comparetable thead th{
+    text-align: center;
+    vertical-align: middle;
+}
 #compare td{
     vertical-align: middle;
     text-align: center;
 }
 #compare img{
-    width:28px;
+    width:20px;
 }
 /************************************************************
 ***********************  contact  *************************

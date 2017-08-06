@@ -1,3 +1,5 @@
+
+<html>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script
   src="http://code.jquery.com/jquery-3.2.1.min.js"
@@ -146,7 +148,7 @@
     <div id="pricing">
         
         <div class="page-header">
-          <h1><small>Price Table</small></h1>
+          <h1><small>Pricing</small></h1>
         </div>
         
         
@@ -222,64 +224,64 @@
                     <th>No subscription fee</th>
                     <td><img src="orange-check.svg"></td>
                     <td><img src="blue-check.svg"></td>
-                    <td>X</td>
+                    <td>x</td>
                     <td><img src="grey-check.svg"></td>
                 </tr>
                 <tr>
                     <th>Global manufacture oriented</th>
                     <td><img src="orange-check.svg"></td>
                     <td><img src="blue-check.svg"></td>
-                    <td>X</td>
-                    <td>X</td>
+                    <td>x</td>
+                    <td>x</td>
                 </tr>
                 <tr>
                     <th>Official oversea storage</th>
                     <td><img src="orange-check.svg"></td>
                     <td><img src="blue-check.svg"></td>
                     <td><img src="grey-check.svg"></td>
-                    <td>X</td>
+                    <td>x</td>
                 </tr>
                 <tr>
                     <th>Oversea storage first 6 months free</th>
                     <td><img src="orange-check.svg"></td>
                     <td><img src="blue-check.svg"></td>
-                    <td>X</td>
-                    <td>X</td>
+                    <td>x</td>
+                    <td>x</td>
                 </tr>
                 <tr>
                     <th>Official customer service, handle returned goods</th>
                     <td><img src="orange-check.svg"></td>
                     <td><img src="blue-check.svg"></td>
-                    <td>X</td>
-                    <td>X</td>
+                    <td>x</td>
+                    <td>x</td>
                 </tr>
                 <tr>
                     <th>Resell or return back to manufacture</th>
                     <td><img src="orange-check.svg"></td>
                     <td><img src="blue-check.svg"></td>
-                    <td>X</td>
-                    <td>X</td>
+                    <td>x</td>
+                    <td>x</td>
                 </tr>
                 <tr>
                     <th>Free handling and return processing fee</th>
-                    <td>X</td>
+                    <td>x</td>
                     <td><img src="blue-check.svg"></td>
-                    <td>X</td>
-                    <td>X</td>
+                    <td>x</td>
+                    <td>x</td>
                 </tr>
                 <tr>
                     <th>Free shipping in United States</th>
-                    <td>X</td>
+                    <td>x</td>
                     <td><img src="blue-check.svg"></td>
-                    <td>X</td>
-                    <td>X</td>
+                    <td>x</td>
+                    <td>x</td>
                 </tr>
                 <tr>
                     <th>No Sales Commission</th>
                     <td><img src="orange-check.svg"></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
                 </tr>
             </tbody>
         </table>
@@ -311,9 +313,15 @@ collapseContent();
 function isScrollDown(){
     let percentage = $(window).scrollTop()/($(window).height()/2);
     let o = percentage * percentage;
-    if(percentage < 1){
+    if(percentage < 0.9){
         $("#content").css({
             "opacity": o, 
+            "z-index": "-99",
+        });
+    }else if(percentage < 0.98){
+        $("#content").css({
+            "opacity": o, 
+            "z-index": "0",
         });
         return false;
     } else {
@@ -327,7 +335,6 @@ function expandContent(){
     $("#content").css({
             "position": "absolute",
             "top": "100vh",
-            "z-index": "0",
     });
     return;
 }
@@ -340,6 +347,8 @@ function collapseContent(){
 }
 if(isScrollDown()){
    expandContent();
+}else{
+    collapseContent();
 }
 $(window).scroll(()=>{
     $("#content").show();
