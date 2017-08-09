@@ -30,13 +30,11 @@ element{
 {
     color:#fff;
 }
-.home-wrapper .navbar-default .navbar-brand:hover,
-.navbar-default .navbar-nav>li>a:hover{
+.home-wrapper .navbar-default .navbar-brand:hover{
     color:#777;
 }
-.home-wrapper .navbar-default .navbar-brand:visited,
-.navbar-default .navbar-nav>li>a:visited{
-    color:#fff;
+.navbar-default .navbar-nav>li>a:hover{
+    color:#777;
 }
 .banner{
     background-image: url("img/m2rbackground.jpg");
