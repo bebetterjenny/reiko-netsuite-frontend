@@ -1,0 +1,457 @@
+<style>
+/************************************************************
+***********************  content  ***************************
+************************************************************/
+element{
+    --blue-color: rgba(88,122,165,0.8);
+    --reiko-color: rgba(243,124,61,0.8);
+    --wrong-color: rgba(246,86,118,0.8);
+}
+/************************************************************
+*********************  home-wrapper  *************************
+************************************************************/
+.header_td{
+    display: none;
+    
+}
+.home-wrapper{
+    height:200%;
+    z-index: -99;
+}
+.home-wrapper .navbar{
+    background: rgba(22,51,95,1);
+    border: none;
+    position: fixed;
+    width:100%;
+    z-index: 1;
+}
+.home-wrapper .navbar-default .navbar-brand,
+.navbar-default .navbar-nav>li>a
+{
+    color:#fff;
+}
+.home-wrapper .navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav>li>a:hover{
+    color:#777;
+}
+.home-wrapper .navbar-default .navbar-brand:visited,
+.navbar-default .navbar-nav>li>a:visited{
+    color:#fff;
+}
+.banner{
+    background-image: url("img/m2rbackground.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: top;
+    position:absolute;
+    top:0;
+    z-index: -1;
+    width:100%;
+    height:100%; 
+    box-shadow: 1px 1px 30px 0 rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+.home-wrapper .overlay{
+    position:absolute;
+    top:0;
+    z-index: -1;
+    width:100%;
+    height:100%;
+    background-color: rgba(185,237,248,0.2);
+    background: -webkit-linear-gradient(rgba(22,51,95,1)50px, rgba(22,51,95,0.6), rgba(185,237,248,0.2),rgba(185,237,248,0.6));
+    background: -o-linear-gradient(rgba(22,51,95,1)50px, rgba(22,51,95,0.6), rgba(185,237,248,0.2),rgba(185,237,248,0.6));
+    background: -moz-linear-gradient(rgba(22,51,95,1)50px, rgba(22,51,95,0.6), rgba(185,237,248,0.2),rgba(185,237,248,0.6));
+    background: linear-gradient(to bottom, rgba(22,51,95,1)50px, rgba(22,51,95,0.6), rgba(185,237,248,0.2),rgba(185,237,248,0.6));
+    border-radius: 10px;
+}
+.jumbotron{
+    background-color: transparent;
+    width:60%;
+    margin:auto;
+    color: #fff;
+    position: absolute;
+    top: 120px;
+    left:100px;
+}
+.jumbotron p{
+    margin-top:45px;
+}
+.jumbotron a{
+    color: #fff;
+}
+.jumbotron .btn,
+#pricing .btn{
+    background-color: #F37C3D;
+    padding:10px 12px;
+    color: #fff;
+    border:none;
+}
+.btn:hover{
+    box-shadow: 0px 2px 5px #345;
+}
+/************************************************************
+***********************  content  ***************************
+************************************************************/
+#content{
+    position:fixed;
+    top: 0;
+    width:100%;
+    z-index: -99;
+    display:none;
+}
+.page-header{
+    text-align: center;
+    padding-top:80px;
+    border: none;
+}
+.workflow-tab>li{
+    width:33.333%;
+    text-align: center;
+}
+/************************************************************
+***********************  workflow  *************************
+**********************************************************/
+#workflow{
+    padding: 0;
+    padding-top: 60px;
+    min-height: 100vh;
+}
+.workflow-tab>li>a{
+    min-height:62px;
+    overflow:hidden;
+}
+#workflow>div{
+    margin-left:5%;
+    position:relative;
+}
+#workflow .row{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#workflow .row div{
+    padding:0;
+}
+#workflow .row>div{
+    min-height: 90px;
+    display:flex;
+}
+#workflow .row div p{
+    width:90%;
+    margin:auto;
+    line-height: 16px
+}
+.arrow{
+    min-height:48px;
+    max-height:64px;
+    position:relative;
+}
+.arrow-long{
+    background-image: url("img/a.svg");
+    background-size:contain !important;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.arrow-right{
+    position: relative;
+    overflow: hidden;
+    background-image: url("img/a.svg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+.arrow-left{
+    position: relative;
+    overflow: hidden;
+    background-image: url("img/a.svg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.arrow-down{
+    position: relative;
+    overflow: hidden;
+}
+.arrow-down:before{
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    z-index: 1;
+    background-image: url("img/a.svg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.arrow-up{
+    position: relative;
+    overflow: hidden;
+}
+.arrow-up:before{
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    z-index: 1;
+    background-image: url("img/a.svg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.arrow-lean{
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+}
+.arrow-lean:before{
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    z-index: 1;
+    background-image: url("img/a.svg");
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    -webkit-transform: rotate(-150deg);
+    transform: rotate(-150deg);
+}
+.arrow-lean img{
+    height: 100%;
+    width: 100%;
+    transform:rotate(-150deg);
+}
+#workflow .bg-primary{
+    background-color: transparent;
+}
+#workflow .row:nth-child(even)>div{
+    min-height: 50px;
+}
+#workflow .row>div{
+    border-radius:5px;
+    text-align: left;
+}
+.manu-do{
+    padding: 5px;
+    background-color: rgba(88,122,165,0.8);
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+.reiko-do{
+    background-color: rgba(243,124,61,0.8);
+}
+.wrong-do{
+    background-color: rgba(246,86,118,0.8);
+}
+#workflow ul{
+    position:absolute;
+    top:0;
+    right:25px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin:auto;;
+    list-style: none;
+}
+#workflow .circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    float:left;
+    margin: 5px 5px 0 0;
+}
+#workflow span{
+    float:left;
+    
+}
+/************************************************************
+***********************  pricetable  *************************
+**********************************************************/
+#pricing{
+    background-color: rgba(88,122,165,0.8);
+    min-height:100vh;
+}
+#pricing .page-header{
+    padding:120px 0 80px;
+}
+#pricing .page-header small{
+    color:#fff;
+}
+.price-tab{
+    width:70%;
+    margin:0 auto;
+    display: flex;
+}
+.price-tab>li{
+    width:50%;
+    text-align: center;
+}
+.price-tab>li a{
+    margin-right: 0;
+    border-radius: 0;
+    min-height:62px;
+    overflow: hidden;
+}
+.price-tab>li:not(.active)>a{
+    color: #fff;
+}
+.tablecontainer{
+    background-color: transparent;
+    padding-bottom:50px;
+}
+#pricetable {
+    width:90%;
+    margin:auto;
+    margin-bottom: 50px;
+}
+#pricetable thead th:last-child{
+    border-right: none;
+}
+#pricetable tbody>tr:first-child th,
+#pricetable tbody>tr:first-child td{
+    border-top:none;
+}
+#pricetable th{
+    vertical-align: middle;
+    text-align: center;
+    border-right: rgb(221,221,221) 1px solid;
+    width:24%;
+    color:#fff;
+}
+#pricetable td{
+    vertical-align: middle;
+    border-left:  rgb(221,221,221) 1px solid;
+    color:#fff;
+}
+#pricing .btn{
+    width:18%;
+    margin-left:41%;
+}
+/************************************************************
+***********************  compare  *************************
+**********************************************************/
+#compare{
+    min-height:75vh;
+}
+#comparetable{
+    width:90%;
+    margin:auto;
+    border: rgb(221,221,221) 1px solid;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px 0 rgba(0,0,0,.2);
+}
+#comparetable thead th{
+    text-align: center;
+    vertical-align: middle;
+}
+#compare td{
+    vertical-align: middle;
+    text-align: center;
+}
+#compare img{
+    width:20px;
+}
+#compare .notes{
+    width:90%;
+    margin:60px auto;
+    font-size:12px;
+}
+#compare th,
+#compare td{
+    color:#777;
+}
+/************************************************************
+***********************  contact  *************************
+**********************************************************/
+#contact{
+    width:100%;
+    min-height:80px;
+    position: relative;
+    margin:120px 0 0;
+    padding:0;
+    background: #05181e;
+    background: -webkit-linear-gradient(left, #05181e 50%, #16335F,  #587AA5);
+    background: -o-linear-gradient(right, #05181e 50%, #16335F,  #587AA5);
+    background: -moz-linear-gradient(right, #05181e 50%, #16335F,  #587AA5);
+    background: linear-gradient(to right, #05181e 50%, #16335F,  #587AA5);
+}
+#contact img{
+    width:100%;
+    opacity:0.8;
+}
+#contact .overlay{
+    position: absolute;
+    width:100%;
+    height:100%;
+    background-color: rgba(243,124,61,0.8);
+    background: -webkit-linear-gradient(left top, rgba(243,124,61,0.6), rgba(247,133,0,0));
+    background: -o-linear-gradient(bottom right, rgba(243,124,61,0.6), rgba(247,133,0,0));
+    background: -moz-linear-gradient(bottom right, rgba(243,124,61,0.6), rgba(247,133,0,0));
+    background: linear-gradient(to bottom right,  rgba(22,51,95,0.8)50px, rgba(22,51,95,0.6), rgba(88,122,165,0.4),rgba(88,122,165,0.2));
+}
+#contact .row>div:last-child{
+    height: 100%;
+    vertical-align: middle;
+}
+#contact #contactdetail ul{
+    color:#fff;
+    width:100%;
+    margin:10vw auto 0;
+    text-align: center;
+    list-style: none;
+}
+#contact #contactdetail ul li{
+    margin-top:10px;
+}
+
+/************************************************************
+***********************  media query ************************
+**********************************************************/
+@media (min-width: 991px){
+    #workflow .row>div{
+        min-height: 80px;
+    }
+    #workflow .row:nth-child(even)>div{
+    min-height: 60px;
+}
+}
+@media (min-width: 1200px){
+    #workflow .row>div{
+        min-height: 70px;
+    }
+    #workflow .row div p{
+        line-height: 18px;
+    }
+}
+@media (max-width: 480px){
+    #contact .row>div:last-child{
+        width:100%;
+        height:100%;
+        margin: 0 auto 15px;
+    }
+}
+@media (max-width: 640px){
+    #contact .row>div:first-child{
+        display:none;
+        height: 180px !important;
+    }
+}
+
+/************************************************************
+***********************  typography ************************
+**********************************************************/
+.silver{
+    color:#777;
+}
+</style>
