@@ -248,9 +248,13 @@ element{
 }
 .reiko-do{
     background-color: rgba(243,124,61,0.8);
+    -webkit-transition: 1s;
+    transition: 1s;
 }
 .wrong-do{
     background-color: rgba(246,86,118,0.8);
+    -webkit-transition: 1s;
+    transition: 1s;
 }
 #workflow ul{
     position:absolute;
