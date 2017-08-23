@@ -292,6 +292,7 @@
 			<th>Qty</th>
 			<th>Unit Price</th>
 			<th>Subtotal</th>
+            <th>In Stock</th>
 		</tr>
 	</thead>
 	<tbody class="ordersheet-items"></tbody>
@@ -325,6 +326,9 @@
 	</td>
 	<td class="os-item__subtotal cell">
 		${{subtotal}}
+	</td>
+    <td class="os-item__instock cell">
+		{{instock}}
 	</td>
 	<td></td>
 
@@ -579,7 +583,8 @@
 				price: price.toFixed(2),
 				quantity: 0,
 				subtotal: 0.00,
-				image: $('.flex-control-thumbs li:first-of-type img').attr('src')
+				image: $('.flex-control-thumbs li:first-of-type img').attr('src'),
+                instock: "Out of stock"
 			};
 			orderSheet.addItem(ordersheetItem);
 			renderItem(ordersheetItem);
@@ -597,7 +602,7 @@
 			
 			// var qPrice = getQuantityPrice(val);
 			$('select[name="custcol6"] option').each(function (i, opt) {
-				console.log(opt);
+//				console.log(opt);
 				if ($(opt).text().trim() ===  $itemEl.find('.os-item__size').text().trim()) {
 					$(opt).prop('selected', true);
 				}
@@ -617,7 +622,7 @@
 		});
 		$.ajax('/app/site/hosting/scriptlet.nl?script=212&deploy=1&itemid=<%=getCurrentAttribute("item", "internalid")%>')
 		.done(function (res) {
-			console.log(res);
+//			console.log(res);
 			var data;
 			try {
 				data = JSON.parse(res);
@@ -642,6 +647,10 @@
 				});
 			});
 			// console.log('orderSheet.items: ', orderSheet.items);
+            $.each(data, function(i, v){
+                var message = parseInt(v.instock)>0 ? "in stock" : "out of stock";
+                $($(".os-item__instock")[i]).html(message);
+            });
 		});
 	});
 		// Wish List
