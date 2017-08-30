@@ -38,6 +38,9 @@
     padding: 2px !important;
     width: 40px !important;
 }
+input[id^='qtyadd_'] {
+    width: 50px;
+}
 #addtocart {
     background: #fe8328 none repeat scroll 0 0 !important;
     border: none !important;
@@ -74,6 +77,7 @@ text-transform: uppercase;
 
 .listsixcontainer {padding-top: 0px !Important;}
 .bgbutton {font-weight: normal !important;}
+.select_0 {display: none}
 .promoitem {text-decoration: line-through;  font-family: "open_sanslight" !important;
     font-size: 16px !important; color: #fe8328;}
 .homeslider {display: none !Important;}
@@ -84,16 +88,16 @@ text-transform: uppercase;
 .quantity {height: 29px !Important;}
 .homesixrelatedxxx .qty2xxx {height: 38px !Important;}
 .boxrelated .bglt {background: #eeeeee !Important;}
-.qtycontainer .txt18b-red, .qtycontainer .txt14b-red {font-size: 16px !important; font-family: "open_sanslight" !important;}
+.qtycontainer .txt18b-red, .qtycontainer .txt14b-red {font-size: 16px !important; font-family: "open_sanslight" !important; margin-bottom: 10px;}
 .qty2, .qty4 {color: #333 !important; font-weight: normal !Important;}
 .quantity {
     width: 40px;
 }
 .listheadernosort {font-size: 16px !important; padding: 10px !important; font-family: "open_sanslight" !important;}
 .qtycontainer .texttable {font-size: 16px !important; padding: 10px; font-family: "open_sanslight" !important; border-color: #eee;}
-.listheadernosort {width: 48% !Important; background: #eeeeee !Important;}
+.listheadernosort {width: 70% !Important; background: #eeeeee !Important;}
 .qtycontainer {width: 100% !important;}
-.qtycontainer .bglt{width: 300px; background: #eeeeee !important;}
+.qtycontainer .bglt{width: 480px; background: #eeeeee !important;}
 #wish_list_text span {cursor: pointer; font-size: 16px !important;}
 #wish_list_text:hover span {color: #fe8328 !important; }
 	#tellafriend {
@@ -114,7 +118,17 @@ TABLE a:hover {
 	text-decoration: none !important;
 }
 
-.texttable {background: #FFF !Important; width: 50%;}
+.texttable {
+    background: #FFF !Important;
+/*    width: 50%;*/
+}
+.newPrice tr>.texttable:last-child {
+    width: 1px;
+}
+.scp102 td{
+    display: inline-flex;
+    flex-direction: column-reverse;
+}
 .bestsellerscontainer {font-family: "open_sanslight" !important;}
  
 

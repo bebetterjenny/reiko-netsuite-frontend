@@ -56,14 +56,16 @@
 					   <FORM method='post' name='form<%=getCurrentAttribute('item', 'internalid')%>' id='form<%=getCurrentAttribute('item', 'internalid')%>' onsubmit='return checkmandatory<%=getCurrentAttribute('item', 'internalid')%>();' action='/app/site/backend/additemtocart.nl'>
                            <TR> 
                               <TD class="qtycontainer" height="20" width="100%">
-                                    <DIV class="txt18b-red item-price"><%=getCurrentAttribute('item', 'salesPriceDrilldownHtml')%></DIV>
-    <!-- **************************New Price Table Start******************************* -->
+                                    <DIV class="txt18b-red item-price" style="display: none"><%=getCurrentAttribute('item', 'salesPriceDrilldownHtml')%></DIV>
+<!-- **************************New Price Table Start******************************* -->  
                                     <div class="newPrice txt18b-red item-price">
                                         <table class="bglt" border="0" cellspacing="0" cellpadding="0">
                                             <tbody>
                                                 <tr>
                                                     <td class="smalltext"><div class="listheadernosort">Unit</div></td>
                                                     <td class="smalltext"><div class="listheadernosort">Price</div></td>
+                                                    <td class="smalltext"><div class="listheadernosort">Unit Price</div></td>
+                                                    <td class="smalltext"><div class="listheadernosort">Qty</div></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -72,10 +74,12 @@
                                     <script id = "newPrice" type="text/x-handlebars-template">
                                         <tr>
                                             <td class="texttable">{{unit}}</td>
+                                            <td class="texttable">{{newPrice}}</td>
                                             <td class="texttable">{{price}}</td>
+                                            <td class="texttable"><input type="number" min="0" name="qtyadd" id="qtyadd_{{unit}}" value='0' class="qty2 inputreq"></td>
                                         </tr>
                                     </script>    
-    <!-- **************************New Price Table End******************************* -->  
+<!-- **************************New Price Table End******************************* -->  
 <!--
                                     <div>
                                         <span class="itemprice" id="itemprice<%=getCurrentAttribute('item', 'internalid')%>"></span>
@@ -87,28 +91,30 @@
                                 </TD>
                               <TD width="10"><IMG src="/images/store/templates/common/spacer.gif" height="10" width="10"></TD>
                            </TR>
-                                  <tr><td><div class="removematrixmessagecontainer"><NXSIZEGUIDE></NXSIZEGUIDE></div></td></tr>
+                           <tr><td><div class="removematrixmessagecontainer"><NXSIZEGUIDE></NXSIZEGUIDE></div></td></tr>
                            <tr class="matrix-options">
                                <td colspan=3 class="txt11-grey">
                                    <TABLE id="options" width="100%" border="0" cellspacing="0" cellpadding="0"><%=getCurrentAttribute('item','addtocartoptionshtml')%></TABLE>
                                </td>
                            </tr>
-                           <TR class="outofstockcontainer2"> 
+                           <TR class="outofstockcontainer2 scp102"> 
                             <TD colspan=3>
                                 <!--<IMG src="/images/store/templates/common/spacer.gif" height="3" width="1"><br>-->
                                 <TABLE width="200" border="0" cellspacing="0" cellpadding="0">
-                                    <TR align=left>
+                                    <TR align=center>
                                         <form method='post' action='/app/site/backend/additemtocart.nl?c=4342530'>
                                             <input type='hidden' name='buyid' value='<%=getCurrentAttribute('item', 'internalid')%>'>
                                             <input type='hidden' name='c'  value='4342530'>
                                             <%=getCurrentAttribute('item','addtocartitemid')%>
-                                            <input type="number" name="qtyadd" id="qtyadd" value='1' class="inputreq">
+                                            <input type="hidden" name="qtyadd" id="qtyadd" value='1' class="inputreq">
                                             <input type="hidden" name="qty" id="qty" value='1' class="inputreq">
+<!--
                                             <select name="unit" id="unit" class="select_<%=getCurrentAttribute('item','quantityonhand')%>">
                                               <option value="1">Each</option>
                                               <option value="6">Pack</option>
                                               <option value="120">Box</option>
                                             </select>
+-->
                                             <input type="button" class="bgbutton" style="" value="Add to Cart" id="addtocart" name="addtocart" onclick="if (document.forms['form<%=getCurrentAttribute('item', 'internalid')%>'].onsubmit()) { document.forms['form<%=getCurrentAttribute('item', 'internalid')%>'].submit(); } return false; return false;">
                                         </form>
                                     </TR>
@@ -452,6 +458,8 @@
 		});
 		// if theres no options we can retire because its not a matrix item
 		if (options.length <= 0) return;
+        $(".newPrice tr>td:last-child").hide();
+//            console.log($(".newPrice tr>td:last-child"));
 		// var itemPrices = window['Item<%=getCurrentAttribute("item", "internalid")%>_prices'];
 		
 		$('select[name="custcol6"]').closest('tr').css('display', 'none');
@@ -597,72 +605,73 @@
             });
 		});
 	});
-		// Wish List
-		$(document).ready(function(){
-		$("#wish_list_text").click(function(e) {
-				var $alerts = $('#wish-alerts'),
-				$this = $(this);
-				$alerts.slideUp(function() {
-					var customer = '<%=getCurrentAttribute("customer","internalId")%>';
-					if (customer) {
-						var labels = [],
-						options = [],
-						valid = true,
-						//need to make sure you update this to the name of table that contains
-						//matrix options
-						$options = $('#options').closest('div').find('select');
-						var qty = $('#qty').val();
-						$options.each(function() {
-							var $this = $(this),
-							$selected = $this.children(':selected'),
-							label = $.trim($this.closest('tr').children(':first').text());
-							if ($selected.val() == '') {
-								labels.push(label);
-								valid = false;
-							}
-							else {
-								options.push('{"id":"' + $this.attr('id') + '","label":"' + label + '","text":"' + $selected.text() + '","value":"' + $selected.val() + '"}');
-							}
-						});
-						if (valid) {
-							$this.addClass('loading').text('Adding to Favorites...');
-							$.get('/app/site/hosting/scriptlet.nl', {
-								action: 'addToWishlist',
-								customer: '<%=getCurrentAttribute("customer","internalId")%>',
-								minimumqty: qty,
-								deploy: 'customdeploy_wishlist',
-								item: '<%=getCurrentAttribute("item","internalid")%>',
-								options: '[' + options.join(',') + ']',
-								script: 'customscript_wishlist',
-								siteNumber: 1
-							},
-							function(data) {
-								$this.removeClass('loading');
-								if (parseFloat(data) > 0) {
-									$alerts.html('This item has been added to <a href="/favorites">Your Favorites</a>').slideDown();
-									$this.slideUp();
-								}
-								else {
-									$this.removeClass('loading').text('Add to Favorites');
-									$alerts.text('We are sorry, there has been a problem in our servers, please try again.').slideDown();
-								}
-							})
-						}
-						else {
-							$alerts.text('Please select a value for: ' + labels.join(', ')).slideDown();
-						}
-					}
-					else {
-						$alerts.html('You need to be logged in to add an item to your list. <br /> <a href="<NLLOGINURL>">Click here</a> to login.').slideDown();
-					}
-				});
-				e.preventDefault();
-			});
-		});
+    // Wish List
+    $(document).ready(function(){
+    $("#wish_list_text").click(function(e) {
+            var $alerts = $('#wish-alerts'),
+            $this = $(this);
+            $alerts.slideUp(function() {
+                var customer = '<%=getCurrentAttribute("customer","internalId")%>';
+                if (customer) {
+                    var labels = [],
+                    options = [],
+                    valid = true,
+                    //need to make sure you update this to the name of table that contains
+                    //matrix options
+                    $options = $('#options').closest('div').find('select');
+                    var qty = $('#qty').val();
+                    $options.each(function() {
+                        var $this = $(this),
+                        $selected = $this.children(':selected'),
+                        label = $.trim($this.closest('tr').children(':first').text());
+                        if ($selected.val() == '') {
+                            labels.push(label);
+                            valid = false;
+                        }
+                        else {
+                            options.push('{"id":"' + $this.attr('id') + '","label":"' + label + '","text":"' + $selected.text() + '","value":"' + $selected.val() + '"}');
+                        }
+                    });
+                    if (valid) {
+                        $this.addClass('loading').text('Adding to Favorites...');
+                        $.get('/app/site/hosting/scriptlet.nl', {
+                            action: 'addToWishlist',
+                            customer: '<%=getCurrentAttribute("customer","internalId")%>',
+                            minimumqty: qty,
+                            deploy: 'customdeploy_wishlist',
+                            item: '<%=getCurrentAttribute("item","internalid")%>',
+                            options: '[' + options.join(',') + ']',
+                            script: 'customscript_wishlist',
+                            siteNumber: 1
+                        },
+                        function(data) {
+                            $this.removeClass('loading');
+                            if (parseFloat(data) > 0) {
+                                $alerts.html('This item has been added to <a href="/favorites">Your Favorites</a>').slideDown();
+                                $this.slideUp();
+                            }
+                            else {
+                                $this.removeClass('loading').text('Add to Favorites');
+                                $alerts.text('We are sorry, there has been a problem in our servers, please try again.').slideDown();
+                            }
+                        })
+                    }
+                    else {
+                        $alerts.text('Please select a value for: ' + labels.join(', ')).slideDown();
+                    }
+                }
+                else {
+                    $alerts.html('You need to be logged in to add an item to your list. <br /> <a href="<NLLOGINURL>">Click here</a> to login.').slideDown();
+                }
+            });
+            e.preventDefault();
+        });
+    });
     
     // New Price Table
-    function PriceLevel(unit, price){
+    function PriceLevel(unit, newPrice, price){
         this.unit = unit;
+        this.newPrice = newPrice;
         this.price = price;
     }
     var priceLevels = [];
@@ -685,21 +694,24 @@
     unithtml[2] = "Box";
 
     var prices = [];
+    var newPrices = [];
+    
     $("tr>.texttable:last-child").each(function(i){
-       prices[i] = $(this).html().toString();
+       prices[i] = $(this).html();
         if(prices[i].indexOf("&nbsp") >= 0) {  
             var range = prices[i].split("&nbsp;–&nbsp;");
+            prices[i] = range.join(" - ");
             $.each(range, function(j, v){
                 range[j] = "$" + (parseFloat(range[j].substring(1)) * units[i]).toFixed(2);
             });
-            prices[i] = range.join(" - ");
-            console.log(units[i]+": "+prices[i]);
-            priceLevels.push(new PriceLevel(unithtml[i], prices[i]));
+            newPrices[i] = range.join(" - ");
+            console.log(units[i]+": "+newPrices[i]);
+            priceLevels.push(new PriceLevel(unithtml[i], newPrices[i], prices[i]));
 
         }else{
-            prices[i] = "$" + (parseFloat(prices[i].substring(1)) * units[i]).toFixed(2);
-            console.log(units[i]+": "+prices[i]);
-            priceLevels.push(new PriceLevel(unithtml[i], prices[i]));
+            newPrices[i] = "$" + (parseFloat(prices[i].substring(1)) * units[i]).toFixed(2);
+            console.log(units[i]+": "+newPrices[i]);
+            priceLevels.push(new PriceLevel(unithtml[i], newPrices[i], prices[i]));
         }
     });
 
@@ -708,18 +720,35 @@
     for(var i = 0; i < priceLevels.length; i ++){
         $(compiledNewPrice(priceLevels[i])).appendTo(".newPrice tbody");
     }
+    
+    // Exception SCP102
+    if("<%=getCurrentAttribute('item','custitem_rw_itemtype')%>" == "SCP102") {
+        $(".item-price").show();
+        $("#qty").attr("type", "number");
+        $(".newPrice").hide();
+    }
+    
 
     // Choose Unit
-    function changeValue(){
-        var value = $("#unit").val() * $("#qtyadd").val();
+    function calculate(i){
+        var value = 0;
+        for(var i = 0; i < units.length; i ++){
+            value +=  units[i] * $("#qtyadd_" + unithtml[i]).val();
+        }
         $("#qty").val(value);
     }
-    $("#unit").change(function(){
-        changeValue();
-    });
-    $("#qtyadd").change(function(){
-        changeValue();
+    $("input[id^='qtyadd_']").each(function(i) {
+        $(this).change(function(){
+            calculate(i);
+        });
     });
     NS.form.setValid(true);function checkmandatory<%=getCurrentAttribute('item', 'internalid')%>() {if (document.forms['form<%=getCurrentAttribute('item', 'internalid')%>'].amount) {var amt=document.forms['form<%=getCurrentAttribute('item', 'internalid')%>'].amount;var max_amt=document.forms['form<%=getCurrentAttribute('item', 'internalid')%>'].max_amount;if (!validate_field(amt,'poscurrency',true,false,null,null,true,null)) return false;if (max_amt.value > 0.00 && parseFloat(amt.value) > parseFloat(max_amt.value)) {alert('Invalid amount (exceeds maximum allowed)'); return false; }if (amt.value < 0.01) {alert('Invalid number (must be greater than 0).'); return false; }}return NS.form.isValid() ? true : false;}
+    
+    //Check Login
+    var customer = "<%=getCurrentAttribute('customer','entityid')%>";
+    if(!customer) {
+        $(".item-price").html('Please <a href="https://checkout.na1.netsuite.com/c.4342530/sbe-dev-montblanc/checkout.ssp?is=login&amp;sc=28&amp;login=T&amp;reset=T&amp;vid=6K979J5HAhGSYTel&amp;chrole=17&amp;ck=TRz4f55HAgySYbwY&amp;cktime=149406&amp;promocode=&amp;promocodeaction=overwrite">log in</a> for price');
+    }
+    
 </script>
 </td>
