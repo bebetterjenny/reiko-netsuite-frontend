@@ -1,3 +1,9 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 <div class="dropshipcontainer">
     <div class="dropshipbanner">
         <div class="dropshipbannerleft">
@@ -93,19 +99,8 @@
     <div class="arrow-down mousefollower"></div>
     <div class="dropshipdownload">
         <ul>
-            <li>
-                <div class="dropshippswd">
-                    <div id="pswdinput">
-                        <input type="text" name="password" placeholder="Password given by your dropship specialist">
-                        <input type="button" value="Download">
-                        <div class="arrow-down"></div>
-                    </div>
-                    <div id="wrongpswd">
-                        <p>Your password is wrong, please contact your dropship specialist for the latest one!</p>
-                        <div class="arrow-down"></div>
-                    </div>
-                </div>
-                <a href="" >
+            <li data-toggle="modal" data-target=".pswd-modal">
+                <a href="/site/Documents/Inventory.xlsx" target="_blank">
                     <figure>
                         <img src="http://reikowireless.com/site/images/dropship/file.png">
                         <figcaption>Inventory.xlsx</figcaption>
@@ -113,23 +108,49 @@
                 </a>
                 <p class="helptext">*Password required</p>
             </li>
-            <li>
+            <li data-toggle="modal" data-target=".pswd-modal">
                 <a href="/site/Documents/Product MSRP.csv" target="_blank">
                     <figure>
                         <img src="http://reikowireless.com/site/images/dropship/file.png">
                         <figcaption>Product MSRP.csv</figcaption>
                     </figure>
                 </a>
+                <p class="helptext">*Password required</p>
             </li>
-            <li>
+            <li data-toggle="modal" data-target=".pswd-modal">
                 <a href="/site/Documents/DROPSHIP Template.csv">
                     <figure>
                         <img src="http://reikowireless.com/site/images/dropship/file.png">
                         <figcaption>DROPSHIP Template.csv</figcaption>
                     </figure>
                 </a>
+                <p class="helptext">*Password required</p>
             </li>
         </ul>
+        
+        <!-- pswd modal -->
+        <div class="modal fade pswd-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Wrong password!</strong>
+              </div>  
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Password given by your dropship specialist</h4>
+              </div>
+              <div class="modal-body">
+                <input type="text" name="password" class="form-control">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning">Download</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
     </div>
     <div class="dropshipnote">
         <p style="">&#x2a;&#x2a; On Reiko products.</p>
@@ -139,28 +160,32 @@
 
 
 <script>
-$("#wrongpswd").hide();
-$('#pswdinput').hide();
-$(document).click(function(e) {
-    if ($(e.target).is('.dropshipdownload li:first-child, .dropshipdownload li:first-child *')) {
-        return;
-    }
-    $('#pswdinput, #pswdinput *, #wrongpswd, #wrongpswd *').fadeOut("slow");
-});     
-$(".dropshipdownload li:first-child a").click((e)=>{
+var isPass = function(pswd) {
+    if($("input[name='password']").val() == pswd) return true;
+    else return false;
+}
+var download = function(url) {
+    $(".alert").hide();
+    window.open(url, "_blank");
+}
+var wrongPswd = function() {
+    $(".alert").show();
+}
+$(".alert").hide();
+var url;
+$(".dropshipdownload li").click(function(e) {
     e.preventDefault();
-    $("#pswdinput, #pswdinput *").fadeIn("slow");
-    $("#pswdinput input[type='button']").click(()=>{
-        if ($("#pswdinput input[type='text']").val() == "yQnDgDMA") {
-            $('#pswdinput, #pswdinput *').hide();
-            window.open("/site/Documents/Inventory.xlsx", "_blank");
+    url = $(this).find("a").prop("href");
+    console.log(url);
+    $(".modal-footer .btn-warning").click(function() {
+        if(isPass("yQnDgDMA")) {
+            download(url);
         } else {
-            $("#wrongpswd, #wrongpswd *").fadeIn("slow");
+            wrongPswd();
         }
     });
-    
 });
- 
+
 </script>
 
 <script>

@@ -1,4 +1,7 @@
 <style>
+.clearfix {
+    margin-left: 15px !important;
+}
 /******************Banner*******************/
 .commonimagecontainer {display: none}
 .breadcrumbcontainer {display: none}
@@ -218,62 +221,7 @@ input[type="button"]:hover{
     position:relative;
 }
 /***************password******************/
-.dropshippswd{
-    display:flex;
-    flex-direction:column;
-    justify-content: space-around;
-    position:absolute;
-    bottom:170px;
-    left:-105px;
-}
-.dropshippswd #pswdinput{
-    width: 320px;
-    background-color: rgba(246,134,87, 0.8);
-    padding:5px 0;
-    margin-bottom: 0;
-    border-radius: 10px;
-}
-.dropshippswd #pswdinput input{
-    display:block;
-    margin:5px auto;
-    height: 30px;
-    background: -webkit-linear-gradient(#FfBf5f, #F6B352);
-    background: -o-linear-gradient(#FfBf5f, #F6B352);
-    background: -moz-linear-gradient(#FfBf5f, #F6B352);
-    background: linear-gradient(#FfBf5f, #F6B352);
-    background: #F6B352;
-    border-radius: 5px;
-}
-.dropshippswd #pswdinput>input:first-child{
-    background-color: #fff;
-    width: 90%;
-    border:1px solid #ccc;
-}
-.dropshippswd #pswdinput>input:nth-child(2){
-    width:30%;
-    color:#fff;
-    border:none;
-}
-.dropshippswd .arrow-down{
-    position:absolute;
-    left:140px;
-    border-top-color: rgba(246,134,87, 0.8);
-    bottom:-20px;
-}
-.dropshippswd #wrongpswd{
-    width:320px;
-/*    display:none;*/
-    position:absolute;
-    bottom:120px;
-    text-align: left;
-}
-.dropshippswd #wrongpswd p{
-    color:#fff;
-    background: rgba(246,134,87, 0.8);
-    padding:10px;
-    margin:0;
-    border-radius:10px;
-}
+
 /********************dropship note********************************/
 .dropshipnote p {
     font-size: 14px; 
@@ -342,6 +290,11 @@ input[type="button"]:hover{
     }
     .dropshipcontainer h{
         font-size:1.6em;
+    }
+}
+@media (min-width: 768px){
+    .modal-dialog{
+        margin: 180px auto !important;
     }
 }
 @media (max-width: 640px){
