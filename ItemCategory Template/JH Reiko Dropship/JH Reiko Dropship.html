@@ -1,8 +1,9 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<!-- Hash -->
+<script src="http://www.bichlmeier.info/sha256.js"></script>
 
 <div class="dropshipcontainer">
     <div class="dropshipbanner">
@@ -161,7 +162,7 @@
 
 <script>
 var isPass = function(pswd) {
-    if($("input[name='password']").val() == pswd) return true;
+    if(sha256_digest($("input[name='password']").val()) == pswd) return true;
     else return false;
 }
 var download = function(url) {
@@ -176,9 +177,8 @@ var url;
 $(".dropshipdownload li").click(function(e) {
     e.preventDefault();
     url = $(this).find("a").prop("href");
-    console.log(url);
     $(".modal-footer .btn-warning").click(function() {
-        if(isPass("yQnDgDMA")) {
+        if(isPass("fac66bdb72fc25aa257061d6a758bc719f77e6e4159ceeb37110daba71b55c79")) {
             download(url);
         } else {
             wrongPswd();
