@@ -33,7 +33,6 @@
 				<div id="spotlight-content22">
 				    <h1 class="drilldownheader"><%=getCurrentAttribute('item','storedisplayname2')%></h1>
 				    <p style="font-size: 19px; margin-bottom: 18px;"><%=getCurrentAttribute('item','displayname')%></p>
-				    <p class="upcontainer" style="display: block !important"><%=getCurrentAttribute('item','custitem_rw_items_boxandcase')%> PCS/PACK &nbsp &nbsp <%=getCurrentAttribute('item','custitem_rw_unitpercase')%> PCS/BOX</p>
                     <p class="upcontainer"><span class="upcontainer">UPC CODE: <%=getCurrentAttribute('item','upccode')%></span></p>
                     <div class="qtyavailablecontainer" style="display: none;"><%=getCurrentAttribute('item','quantityavailable')%></div>
                     <div class="minquancontainer" style="display: none;"><%=getCurrentAttribute('item','minimumquantity')%></div>
@@ -63,9 +62,9 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="smalltext"><div class="listheadernosort">Unit</div></td>
+                                                    <td class="smalltext"><div class="listheadernosort">Qty</div></td>
                                                     <td class="smalltext"><div class="listheadernosort">Price</div></td>
                                                     <td class="smalltext"><div class="listheadernosort">Unit Price</div></td>
-                                                    <td class="smalltext"><div class="listheadernosort">Qty</div></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -74,9 +73,9 @@
                                     <script id = "newPrice" type="text/x-handlebars-template">
                                         <tr>
                                             <td class="texttable">{{unit}}</td>
+                                            <td class="texttable"><input type="number" min="0" name="qtyadd" id="qtyadd_{{unit}}" value='0' class="qty2 inputreq"></td>
                                             <td class="texttable">{{newPrice}}</td>
                                             <td class="texttable">{{price}}</td>
-                                            <td class="texttable"><input type="number" min="0" name="qtyadd" id="qtyadd_{{unit}}" value='0' class="qty2 inputreq"></td>
                                         </tr>
                                     </script>    
 <!-- **************************New Price Table End******************************* -->  
@@ -161,7 +160,7 @@
 				<div class="specs-content333">
 				    <h1 class="drilldownheader"><%=getCurrentAttribute('item','storedisplayname2')%></h1>
 				    <p style="font-size: 19px; margin-bottom: 18px;"><%=getCurrentAttribute('item','displayname')%></p>
-                    <p class="upcontainer"><%=getCurrentAttribute('item','custitem_rw_items_boxandcase')%> PCS/PACK &nbsp &nbsp <%=getCurrentAttribute('item','custitem_rw_unitpercase')%> PCS/BOX</p><p class="upcontainer"><span class="upcontainer">UPC CODE: <%=getCurrentAttribute('item','upccode')%></span></p>
+                    <p class="upcontainer"><span class="upcontainer">UPC CODE: <%=getCurrentAttribute('item','upccode')%></span></p>
 				    <div class="square">
 				        <div><%=getCurrentAttribute('item','storedescription')%></div>
 				    </div>
@@ -689,9 +688,9 @@
     units[2] = parseInt(<%=getCurrentAttribute('item','custitem_rw_unitpercase')%>);
 
     var unithtml = [];
-    unithtml[0] = "Each";
-    unithtml[1] = "Pack";
-    unithtml[2] = "Box";
+    unithtml[0] = "Each / 1 Pcs";
+    unithtml[1] = "Pack / " + <%=getCurrentAttribute('item','custitem_rw_items_boxandcase')%> + " Pcs";
+    unithtml[2] = "Case / Lot / " + <%=getCurrentAttribute('item','custitem_rw_unitpercase')%> + " Pcs";
 
     var prices = [];
     var newPrices = [];
@@ -721,12 +720,12 @@
         $(compiledNewPrice(priceLevels[i])).appendTo(".newPrice tbody");
     }
     
-    // Exception SCP102
-    if("<%=getCurrentAttribute('item','custitem_rw_itemtype')%>" == "SCP102") {
-        $(".item-price").show();
-        $("#qty").attr("type", "number");
-        $(".newPrice").hide();
-    }
+//    // Exception SCP102
+//    if("<%=getCurrentAttribute('item','custitem_rw_itemtype')%>" == "SCP102") {
+//        $(".item-price").show();
+//        $("#qty").attr("type", "number");
+//        $(".newPrice").hide();
+//    }
     
 
     // Choose Unit

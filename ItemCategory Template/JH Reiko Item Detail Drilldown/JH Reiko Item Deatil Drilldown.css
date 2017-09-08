@@ -122,9 +122,6 @@ TABLE a:hover {
     background: #FFF !Important;
 /*    width: 50%;*/
 }
-.newPrice tr>.texttable:last-child {
-    width: 1px;
-}
 .scp102 td{
     display: inline-flex;
     flex-direction: column-reverse;
