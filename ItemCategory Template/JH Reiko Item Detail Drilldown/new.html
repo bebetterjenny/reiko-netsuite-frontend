@@ -52,7 +52,9 @@
             <tr>
                 <th colspan="2">Order Sheet</th>
                 <th>Size</th>
-                <th>Qty</th>
+                <th>Each / 1 Pcs</th>
+                <th>Pack / <%=getCurrentAttribute('item','custitem_rw_items_boxandcase')%> Pcs</th>
+                <th>Case / Lot / <%=getCurrentAttribute('item','custitem_rw_unitpercase')%> Pcs</th>
                 <th>Unit Price</th>
                 <th>Subtotal</th>
                 <th>In Stock</th>
@@ -82,7 +84,13 @@
             {{size.name}}
         </td>
         <td class="os-item__qty cell">
-            <input type="number" name="quantity" value="{{quantity}}">
+            <input type="number" name="quantity" value="{{quantity}}" unit="1">
+        </td>
+        <td class="os-item__qty cell">
+            <input type="number" name="quantity" value="{{quantity}}" unit="<%=getCurrentAttribute('item','custitem_rw_items_boxandcase')%>">
+        </td>
+        <td class="os-item__qty cell">
+            <input type="number" name="quantity" value="{{quantity}}" unit="<%=getCurrentAttribute('item','custitem_rw_unitpercase')%>">
         </td>
         <td class="os-item__price cell">
             ${{price}}
@@ -122,10 +130,10 @@
 				orderItem.price = price;
 				return price;
 			},
-			changeQuantity: function (id, val) {
+			changeQuantity: function (id, val, unit) {
 				var orderItem = this.getItem(id);
 				if (orderItem && val >= 0) {
-					orderItem.subtotal = orderItem.price * val;
+					orderItem.subtotal = orderItem.price * val * unit;
 					orderItem.quantity = val;
 					return orderItem.subtotal;
 				}
@@ -351,6 +359,7 @@
 		$('.ordersheet .order-total').html('$0.00');
 		$(document).on('change', 'input[name="quantity"]', function (e) {
 			var val = parseInt($(e.target).val());
+            console.log(val);
 			if (!val || isNaN(val) || 0 > val) { 
 				val = 0;
 				$(e.target).val(val)
@@ -369,7 +378,15 @@
 			// 	var updatedPrice = orderSheet.changePrice(id, qPrice);
 			// 	$itemEl.find('.os-item__price').text('$' + updatedPrice.toFixed(2));
 			// }
-			var itemSubtotal = orderSheet.changeQuantity(id, val);
+            //reset other two input
+            $(e.target).closest('.os-item').children(".os-item__qty").each(()=>{
+                if($(this) !== $(e.target)) {console.log($(this));
+                                             console.log($(e.target));
+                                             $(this).val(0)};
+            });
+            //get unit
+            var unit = $(e.target).attr('unit');
+			var itemSubtotal = orderSheet.changeQuantity(id, val, unit);
 			// orderSheet.items[id].quantity = orderSheet.items[id].quantity !== val ? val : 0;
 			if (itemSubtotal !== false && itemSubtotal >= 0) {
 				$itemEl.find('.os-item__subtotal').text('$' + itemSubtotal.toFixed(2));
